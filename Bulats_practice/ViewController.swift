@@ -7,17 +7,52 @@
 //
 
 import UIKit
-
+import SQLite
 class ViewController: UIViewController {
+    var db: Connection!
+    
+    let sentencessTable = Table("sentences")
+    let id = Expression<Int>("id")
+    let type = Expression<String>("Type")
+    let sentence = Expression<String>("sentence")
+    let position = Expression<Int>("position")
+    let paragraph = Expression<Int>("paragraph")
+
 
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var alert: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenu()
+        do {
+            self.db = try Connection("/Users/admin/Documents/Xcode-applications/Project/Bulats_practice/Bulats.db")
+        }
+        catch{
+            print(error)
+        }
+        listSentence()
         // Do any additional setup after loading the view.
     }
 
+    func listSentence() {
+        print("list user")
+        do{
+            let sentences = try self.db.prepare(self.sentencessTable)
+            //            let sentences = self.sentencessTable.filter(self.type == "Right word")
+
+            for sentence in sentences{
+                
+                print("userID  \(sentence[self.id]), type : \(sentence[self.type]), sentence : \(sentence[self.sentence]), paragraph : \(String(sentence[self.position])), type : \(String(sentence[self.paragraph]))")
+                
+            }
+        }
+        catch{
+            print(error)
+        }
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
