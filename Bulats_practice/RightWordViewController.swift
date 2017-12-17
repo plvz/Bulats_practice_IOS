@@ -40,7 +40,8 @@ class RightWordViewController: UIViewController {
     @IBOutlet weak var answerC: UIButton!
     @IBOutlet weak var answerD: UIButton!
     
-    
+    @IBOutlet weak var nextButton: UIButton!
+    var exercice_number = 0
     
     
     override func viewDidLoad() {
@@ -51,7 +52,12 @@ class RightWordViewController: UIViewController {
         catch{
             print(error)
         }
-        listSentence()
+        listSentence(offset: exercice_number)
+        nextButton.setTitle("Next !", for: UIControlState.normal)
+        answerA.backgroundColor = UIColor.blue
+        answerB.backgroundColor = UIColor.blue
+        answerC.backgroundColor = UIColor.blue
+        answerD.backgroundColor = UIColor.blue
 
        // Do any additional setup after loading the view.
     }
@@ -61,15 +67,21 @@ class RightWordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func listSentence(){
+    func listSentence(offset: Int){
+        var resetOffset = true
         print("list user")
         
         
         do
         {
-            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Right word").limit(1, offset: 0))
+            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Right word").limit(1, offset: offset))
+            print("---------------------------------")
+            print(sentences.underestimatedCount)
+            print("---------------------------------")
+
             //let sentences = self.sentencessTable.filter(self.type == "Right word")
             for sentence in sentences{
+                resetOffset = false
                 let id = sentence[self.id]
 
                 let position = Int(sentence[self.position])
@@ -98,10 +110,6 @@ class RightWordViewController: UIViewController {
                     print("I am over here !!!!")
                     var labelAnswer = answer[self.answer]
                     print(labelAnswer)
-
-                    
-                    
-                    
                     
                     switch c {
                     case 0:
@@ -121,19 +129,8 @@ class RightWordViewController: UIViewController {
                     }
                     
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                  
+
                     
                     var validity = answer[self.valid]
                     print(validity)
@@ -152,27 +149,22 @@ class RightWordViewController: UIViewController {
                 
                 
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
 
             }
         }
         catch
         {
             print(error)
+        }
+        
+        
+        
+        if(resetOffset)
+        {
+            print("reset it")
+            exercice_number = 0
+            listSentence(offset: exercice_number)
+
         }
     }
     
@@ -206,42 +198,83 @@ class RightWordViewController: UIViewController {
     
     
     
-    func checkAnswers(answer_num: Int)
+    func checkAnswers(answer_num: Int) -> Bool
     {
-        print(answer_num)
-        if(answer_num == valid_Answer){
+      if(Int(answer_num) == Int(valid_Answer)){
             print("correct answer !!!!")
+            return true
         }
         else
         {
             print("Wrong !!!")
+            return false
         }
+      
     }
     
     //Answers Button
     @IBAction func answerA(_ sender: Any) {
         print("A")
-        checkAnswers(answer_num :0)
+        
+        if(checkAnswers(answer_num :0)) {
+            answerA.backgroundColor = UIColor.green
+          
+        }
+        else{
+            answerA.backgroundColor = UIColor.red
+        }
     }
     
     
     @IBAction func answerB(_ sender: Any) {
         print("B")
-        checkAnswers(answer_num :1)
+        if(checkAnswers(answer_num :1)) {
+            print("over here")
+            answerB.backgroundColor = UIColor.green
+
+        }
+        else{
+            answerB.backgroundColor = UIColor.red
+        }
     }
     
     @IBAction func answerC(_ sender: Any) {
         print("C")
-        checkAnswers(answer_num :2)
+        if(checkAnswers(answer_num :2)) {
+            answerC.backgroundColor = UIColor.green
+            
+        }
+        else{
+            answerC.backgroundColor = UIColor.red
+            
+        }
+        answerC.backgroundColor = UIColor.red
+        
 
     }
     
     @IBAction func answerD(_ sender: Any) {
         print("D")
-        checkAnswers(answer_num :3)
+        if(checkAnswers(answer_num :3)) {
+            answerD.backgroundColor = UIColor.green
+        }
+        else{
+            answerD.backgroundColor = UIColor.red
+            
+        }
 
     }
     
+    @IBAction func next(_ sender: Any) {
+        answerA.backgroundColor = UIColor.blue
+        answerB.backgroundColor = UIColor.blue
+        answerC.backgroundColor = UIColor.blue
+        answerD.backgroundColor = UIColor.blue
+        exercice_number = exercice_number + 1
+
+        listSentence(offset: exercice_number)
+
+    }
     
     
     

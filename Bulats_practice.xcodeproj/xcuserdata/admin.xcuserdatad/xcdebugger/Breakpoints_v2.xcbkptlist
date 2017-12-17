@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bulats_practice/RightWordViewController.swift"
-            timestampString = "535131478.258702"
+            timestampString = "535226341.305142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "listSentence()"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "listSentence(offset:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
