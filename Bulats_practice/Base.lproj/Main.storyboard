@@ -75,6 +75,7 @@
                                                     <state key="normal" title="Extra Word"/>
                                                     <connections>
                                                         <action selector="extraWord:forEvent:" destination="6Qg-9x-b1X" eventType="touchUpInside" id="VDB-GH-sUx"/>
+                                                        <segue destination="daf-il-wl0" kind="show" id="7Pu-oy-pLP"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -271,6 +272,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3E-cc-olV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-391.19999999999999" y="1672.7136431784108"/>
+        </scene>
+        <!--Extra Word View Controller-->
+        <scene sceneID="tgR-AO-mFl">
+            <objects>
+                <viewController id="daf-il-wl0" customClass="ExtraWordViewController" customModule="Bulats_practice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zBU-IC-a2g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZvZ-96-Qjv">
+                                <rect key="frame" x="129" y="587" width="55" height="30"/>
+                                <state key="normal" title="Validate"/>
+                                <connections>
+                                    <action selector="validate:" destination="daf-il-wl0" eventType="touchUpInside" id="7yZ-Xg-eg7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hTm-Ma-KuI" firstAttribute="bottom" secondItem="ZvZ-96-Qjv" secondAttribute="bottom" constant="50" id="MYK-ya-UN0"/>
+                            <constraint firstItem="ZvZ-96-Qjv" firstAttribute="leading" secondItem="hTm-Ma-KuI" secondAttribute="leading" constant="129" id="YHr-7o-7l5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hTm-Ma-KuI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCi-u4-anb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="528.79999999999995" y="1674.5127436281859"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XfN-SW-JFH">

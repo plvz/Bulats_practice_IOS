@@ -13,6 +13,7 @@
 		84A8B7431FC4F62B00C0A542 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A8B7421FC4F62B00C0A542 /* Assets.xcassets */; };
 		84A8B7461FC4F62B00C0A542 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A8B7441FC4F62B00C0A542 /* LaunchScreen.storyboard */; };
 		84A8B75C1FC4F62B00C0A542 /* Bulats_practiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A8B75B1FC4F62B00C0A542 /* Bulats_practiceUITests.swift */; };
+		84C24DC71FE7C4350097C5A9 /* ExtraWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C24DC61FE7C4350097C5A9 /* ExtraWordViewController.swift */; };
 		84D6A7951FE3DE4200DAAE66 /* RightWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6A7941FE3DE4200DAAE66 /* RightWordViewController.swift */; };
 		84EA25D21FC7390000B7D0FF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA25D01FC7390000B7D0FF /* SWRevealViewController.m */; };
 		84EA25D81FC73DA700B7D0FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA25D71FC73DA700B7D0FF /* ViewController.swift */; };
@@ -121,6 +122,7 @@
 		84A8B7571FC4F62B00C0A542 /* Bulats_practiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bulats_practiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A8B75B1FC4F62B00C0A542 /* Bulats_practiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulats_practiceUITests.swift; sourceTree = "<group>"; };
 		84A8B75D1FC4F62B00C0A542 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84C24DC61FE7C4350097C5A9 /* ExtraWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraWordViewController.swift; sourceTree = "<group>"; };
 		84D6A7941FE3DE4200DAAE66 /* RightWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightWordViewController.swift; sourceTree = "<group>"; };
 		84EA25CF1FC738FF00B7D0FF /* Bulats_practice-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bulats_practice-Bridging-Header.h"; sourceTree = "<group>"; };
 		84EA25D01FC7390000B7D0FF /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				84F1E5781FE2A1D900872324 /* ExercicesTableViewController.swift */,
 				847201911FE2C7F20032BA03 /* MenuTableViewController.swift */,
 				84D6A7941FE3DE4200DAAE66 /* RightWordViewController.swift */,
+				84C24DC61FE7C4350097C5A9 /* ExtraWordViewController.swift */,
 			);
 			path = Bulats_practice;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				84D6A7951FE3DE4200DAAE66 /* RightWordViewController.swift in Sources */,
 				84EA25D21FC7390000B7D0FF /* SWRevealViewController.m in Sources */,
 				84F1E5791FE2A1D900872324 /* ExercicesTableViewController.swift in Sources */,
+				84C24DC71FE7C4350097C5A9 /* ExtraWordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
