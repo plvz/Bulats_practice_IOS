@@ -13,10 +13,10 @@ class ExtraWordViewController: UIViewController {
     
     let sentencessTable = Table("sentences")
     let id = Expression<Int>("id")
-    let type = Expression<String>("Type")
+    let type = Expression<String>("type")
     let sentence = Expression<String>("sentence")
     let position = Expression<Int>("position")
-    let paragraph = Expression<Int>("paragraph")
+    let exercice = Expression<Int>("exercice")
     
     
     let answersTable = Table("answers")
@@ -25,20 +25,24 @@ class ExtraWordViewController: UIViewController {
     let answer = Expression<String>("answer")
     let valid = Expression<String>("valid")
     
+    let historyTable = Table("history")
+    let exercice_number = Expression<Int>("exercice_number")
+    
     var arrayOfTextFields:[UITextField] = []
     var arrayOfAnswers:[String] = []
     var scrollView: UIScrollView!
-    
+    var currentExercice: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - 100))
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 700)
+
         do {
             self.db = try Connection("/Users/admin/Documents/Xcode-applications/Project/Bulats_practice/Bulats.db")
         }
         catch{
             print(error)
         }
+        scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - 100))
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 700)
         print("extra word !!!")
         listSentence()
         
@@ -59,7 +63,7 @@ class ExtraWordViewController: UIViewController {
             //let sentences = self.sentencessTable.filter(self.type == "Right word")
             for sentence in sentences{
                 let id = sentence[self.id]
-                
+                currentExercice = sentence[self.exercice]
                 let position = Int(sentence[self.position])
                 let sentence = sentence[self.sentence]
                // print("userID  \(sentence[self.id]), type : \(sentence[self.type]), sentence : \(sentence[self.sentence]), position : \(String(sentence[self.position])), pargraph : \(String(sentence[self.paragraph]))")
@@ -152,7 +156,20 @@ class ExtraWordViewController: UIViewController {
      
         
     }
+   
+
     
+    @IBAction func next(_ sender: UIButton) {
+        do {
+            let rowid = try db.run(historyTable.insert(exercice_number <- currentExercice))
+            
+            print("inserted id: \(rowid)")
+        } catch {
+            print("insertion failed: \(error)")
+        }
+        //listSentence(offset: exercice_offset)
+        
+    }
     
     
 

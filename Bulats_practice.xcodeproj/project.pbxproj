@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		847201921FE2C7F20032BA03 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847201911FE2C7F20032BA03 /* MenuTableViewController.swift */; };
+		848C2B381FE813D300214933 /* GapFillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C2B371FE813D300214933 /* GapFillingViewController.swift */; };
 		84A8B73C1FC4F62B00C0A542 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A8B73B1FC4F62B00C0A542 /* AppDelegate.swift */; };
 		84A8B7411FC4F62B00C0A542 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A8B73F1FC4F62B00C0A542 /* Main.storyboard */; };
 		84A8B7431FC4F62B00C0A542 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A8B7421FC4F62B00C0A542 /* Assets.xcassets */; };
@@ -112,6 +113,7 @@
 
 /* Begin PBXFileReference section */
 		847201911FE2C7F20032BA03 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		848C2B371FE813D300214933 /* GapFillingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GapFillingViewController.swift; sourceTree = "<group>"; };
 		84A8B7381FC4F62B00C0A542 /* Bulats_practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bulats_practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A8B73B1FC4F62B00C0A542 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84A8B7401FC4F62B00C0A542 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				847201911FE2C7F20032BA03 /* MenuTableViewController.swift */,
 				84D6A7941FE3DE4200DAAE66 /* RightWordViewController.swift */,
 				84C24DC61FE7C4350097C5A9 /* ExtraWordViewController.swift */,
+				848C2B371FE813D300214933 /* GapFillingViewController.swift */,
 			);
 			path = Bulats_practice;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				847201921FE2C7F20032BA03 /* MenuTableViewController.swift in Sources */,
 				84D6A7951FE3DE4200DAAE66 /* RightWordViewController.swift in Sources */,
 				84EA25D21FC7390000B7D0FF /* SWRevealViewController.m in Sources */,
+				848C2B381FE813D300214933 /* GapFillingViewController.swift in Sources */,
 				84F1E5791FE2A1D900872324 /* ExercicesTableViewController.swift in Sources */,
 				84C24DC71FE7C4350097C5A9 /* ExtraWordViewController.swift in Sources */,
 			);

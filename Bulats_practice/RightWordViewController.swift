@@ -13,10 +13,10 @@ class RightWordViewController: UIViewController {
     
     let sentencessTable = Table("sentences")
     let id = Expression<Int>("id")
-    let type = Expression<String>("Type")
+    let type = Expression<String>("type")
     let sentence = Expression<String>("sentence")
     let position = Expression<Int>("position")
-    let paragraph = Expression<Int>("paragraph")
+    let exercice = Expression<Int>("exercice")
     
     
     let answersTable = Table("answers")
@@ -25,7 +25,8 @@ class RightWordViewController: UIViewController {
     let answer = Expression<String>("answer")
     let valid = Expression<String>("valid")
     
-    
+    let historyTable = Table("history")
+    let exercice_number = Expression<Int>("exercice_number")
     
     
     
@@ -41,9 +42,10 @@ class RightWordViewController: UIViewController {
     @IBOutlet weak var answerD: UIButton!
     
     @IBOutlet weak var nextButton: UIButton!
-    var exercice_number = 0
+    var exercice_offset = 0
     
-    
+    var history_exercice:[Int] = [-1]
+    var current_exercice: Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
@@ -52,7 +54,7 @@ class RightWordViewController: UIViewController {
         catch{
             print(error)
         }
-        listSentence(offset: exercice_number)
+        listSentence(offset: exercice_offset)
         nextButton.setTitle("Next !", for: UIControlState.normal)
         answerA.backgroundColor = UIColor.blue
         answerB.backgroundColor = UIColor.blue
@@ -74,16 +76,21 @@ class RightWordViewController: UIViewController {
         
         do
         {
-            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Right word").limit(1, offset: offset))
-            print("---------------------------------")
-            print(sentences.underestimatedCount)
-            print("---------------------------------")
-
+            let history = try self.db.prepare(self.historyTable)
+            
+            for exercice in history
+            {
+                history_exercice.append(Int(exercice[self.exercice_number]))
+            }
+            
+            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Right word" && !history_exercice.contains(id)).limit(1, offset: offset))
+       
             //let sentences = self.sentencessTable.filter(self.type == "Right word")
             for sentence in sentences{
+                
                 resetOffset = false
                 let id = sentence[self.id]
-
+                current_exercice = id
                 let position = Int(sentence[self.position])
                 let sentence = sentence[self.sentence]
                 //print("userID  \(sentence[self.id]), type : \(sentence[self.type]), sentence : \(sentence[self.sentence]), position : \(String(sentence[self.position])), pargraph : \(String(sentence[self.paragraph]))")
@@ -99,15 +106,11 @@ class RightWordViewController: UIViewController {
                 var splitedSetnece = buildSentence(arrayString: sentenceArray, limit: position)
                 startSentence?.text = splitedSetnece[0]
                 endSentence?.text = splitedSetnece[1]
-                
-                
-                print("ID :")
-                print(id)
+
                 var c=0
                 let answers = try self.db.prepare(self.answersTable.filter(self.fk_sentence == id))
                 for answer in answers
                 {
-                    print("I am over here !!!!")
                     var labelAnswer = answer[self.answer]
                     print(labelAnswer)
                     
@@ -159,13 +162,7 @@ class RightWordViewController: UIViewController {
         
         
         
-        if(resetOffset)
-        {
-            print("reset it")
-            exercice_number = 0
-            listSentence(offset: exercice_number)
-
-        }
+       
     }
     
     func buildSentence(arrayString: [String], limit: Int) -> [String]
@@ -270,9 +267,15 @@ class RightWordViewController: UIViewController {
         answerB.backgroundColor = UIColor.blue
         answerC.backgroundColor = UIColor.blue
         answerD.backgroundColor = UIColor.blue
-        exercice_number = exercice_number + 1
-
-        listSentence(offset: exercice_number)
+        exercice_offset = exercice_offset + 1
+        do {
+            let rowid = try db.run(historyTable.insert(exercice_number <- current_exercice))
+            
+            print("inserted id: \(rowid)")
+        } catch {
+            print("insertion failed: \(error)")
+        }
+        listSentence(offset: exercice_offset)
 
     }
     

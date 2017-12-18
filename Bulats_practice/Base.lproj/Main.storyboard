@@ -22,6 +22,9 @@
                             <rect key="frame" x="0.0" y="132" width="375" height="51"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Gap Filling"/>
+                            <connections>
+                                <segue destination="ufp-6n-lhk" kind="show" id="REK-pq-RDN"/>
+                            </connections>
                         </button>
                         <sections>
                             <tableViewSection id="cWN-iF-0zc">
@@ -121,6 +124,41 @@
                     <view key="view" contentMode="scaleToFill" id="Bg1-ST-zDJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Right Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMo-1a-lCk">
+                                <rect key="frame" x="150" y="80" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Extra World" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frr-hM-qUO">
+                                <rect key="frame" x="150" y="181" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Fb-7d-I7f">
+                                <rect key="frame" x="112" y="242" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gap Filling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWI-zb-RKX">
+                                <rect key="frame" x="147" y="293" width="80" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XH5-46-Kst">
+                                <rect key="frame" x="112" y="367" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G5H-MV-ZTL">
+                                <rect key="frame" x="112" y="135" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="w6e-79-dee"/>
                     </view>
@@ -130,7 +168,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="alert" destination="HOb-gs-mzw" id="bnD-Ec-1p0"/>
+                        <outlet property="extraWordProgressBar" destination="2Fb-7d-I7f" id="ghu-ZL-7de"/>
+                        <outlet property="gapFillingProgressBar" destination="XH5-46-Kst" id="Dam-es-1Do"/>
                         <outlet property="menu" destination="cdO-Xu-bj4" id="gN3-Jx-BGj"/>
+                        <outlet property="rightWordProgressBar" destination="G5H-MV-ZTL" id="DJH-RW-K8T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rTg-OL-1ey" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -288,10 +329,19 @@
                                     <action selector="validate:" destination="daf-il-wl0" eventType="touchUpInside" id="7yZ-Xg-eg7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYj-1d-87E">
+                                <rect key="frame" x="229" y="587" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="next:" destination="daf-il-wl0" eventType="touchUpInside" id="vFn-7N-Ebx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hTm-Ma-KuI" firstAttribute="bottom" secondItem="JYj-1d-87E" secondAttribute="bottom" constant="50" id="CZf-bY-md0"/>
                             <constraint firstItem="hTm-Ma-KuI" firstAttribute="bottom" secondItem="ZvZ-96-Qjv" secondAttribute="bottom" constant="50" id="MYK-ya-UN0"/>
+                            <constraint firstItem="hTm-Ma-KuI" firstAttribute="trailing" secondItem="JYj-1d-87E" secondAttribute="trailing" constant="100" id="YDj-vw-J8X"/>
                             <constraint firstItem="ZvZ-96-Qjv" firstAttribute="leading" secondItem="hTm-Ma-KuI" secondAttribute="leading" constant="129" id="YHr-7o-7l5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hTm-Ma-KuI"/>
@@ -299,44 +349,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCi-u4-anb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="528.79999999999995" y="1674.5127436281859"/>
+            <point key="canvasLocation" x="350" y="1673"/>
         </scene>
-        <!--View Controller-->
+        <!--Gap Filling View Controller-->
         <scene sceneID="XfN-SW-JFH">
             <objects>
-                <viewController id="ufp-6n-lhk" sceneMemberID="viewController">
+                <viewController id="ufp-6n-lhk" customClass="GapFillingViewController" customModule="Bulats_practice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wuu-7y-U10">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gap Filling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VX-c7-Qtd">
-                                <rect key="frame" x="146" y="28" width="82" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDX-qB-UZS">
+                                <rect key="frame" x="174" y="588" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGW-f7-EpF">
-                                <rect key="frame" x="61" y="122" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZm-BR-VtO">
-                                <rect key="frame" x="283" y="122" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DYv-h4-OmJ">
-                                <rect key="frame" x="157" y="117" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kqY-Tw-AFS"/>
@@ -344,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfe-7t-FWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376.80000000000001" y="2345.577211394303"/>
+            <point key="canvasLocation" x="1052" y="1673"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3aa-Ua-4pd">
