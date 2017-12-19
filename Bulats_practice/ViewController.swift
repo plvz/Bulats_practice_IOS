@@ -40,7 +40,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var alert: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        sideMenu()
         do {
             self.db = try Connection("/Users/admin/Documents/Xcode-applications/Project/Bulats_practice/Bulats.db")
         }
@@ -48,14 +47,14 @@ class ViewController: UIViewController {
             print(error)
         }
         
-        tmp()
+        load_stats()
        
         
         // Do any additional setup after loading the view.
     }
 
   
-    func tmp()
+    func load_stats()
     {
         do
         {
@@ -126,23 +125,6 @@ class ViewController: UIViewController {
     }
 
     
-    
-    func sideMenu()
-    {
-        if revealViewController() != nil {
-            menu.target = revealViewController()
-            
-            menu.action = #selector(SWRevealViewController.revealToggle(_:))
-            revealViewController().rearViewRevealWidth = 275
-            revealViewController().rightViewRevealWidth = 160
-            
-            alert.target = revealViewController()
-            alert.action = #selector(SWRevealViewController.rightRevealToggle(_:))
-
-            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-    }
-
     
     // MARK: - Navigation
 
