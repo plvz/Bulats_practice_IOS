@@ -61,6 +61,22 @@
                                     <segue destination="O9w-MK-2A8" kind="show" id="Y9h-cP-Gri"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Umg-1n-HD8">
+                                <rect key="frame" x="268" y="120" width="39" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="restart"/>
+                                <connections>
+                                    <action selector="resetRightWord:" destination="FUz-xs-VCG" eventType="touchUpInside" id="Pif-3o-jvD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dux-Jo-gvb">
+                                <rect key="frame" x="270" y="220" width="37" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="restart"/>
+                                <connections>
+                                    <action selector="extraWordReset:" destination="FUz-xs-VCG" eventType="touchUpInside" id="XaK-oG-WEQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="w6e-79-dee"/>
@@ -265,4 +281,7 @@
             <point key="canvasLocation" x="-409" y="906"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="restart" width="32" height="32"/>
+    </resources>
 </document>

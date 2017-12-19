@@ -32,6 +32,7 @@ class ExtraWordViewController: UIViewController {
     var arrayOfAnswers:[String] = []
     var scrollView: UIScrollView!
     var currentExercice: Int!
+    var history_exercice:[Int] = [-1]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,8 +58,14 @@ class ExtraWordViewController: UIViewController {
         var yposition = 20
         do
         {
-            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Extra Word"))
- 
+            let history = try self.db.prepare(self.historyTable)
+            
+            for exercice in history
+            {
+                history_exercice.append(Int(exercice[self.exercice_number]))
+            }
+            
+            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Extra word" && !history_exercice.contains(id)))
             
             //let sentences = self.sentencessTable.filter(self.type == "Right word")
             for sentence in sentences{

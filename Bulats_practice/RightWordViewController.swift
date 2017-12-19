@@ -83,8 +83,8 @@ class RightWordViewController: UIViewController {
                 history_exercice.append(Int(exercice[self.exercice_number]))
             }
             
-            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Right word" && !history_exercice.contains(id)).limit(1, offset: offset))
-       
+            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Right Word" && !history_exercice.contains(id)).limit(1, offset: offset))
+            
             //let sentences = self.sentencessTable.filter(self.type == "Right word")
             for sentence in sentences{
                 

@@ -34,8 +34,10 @@ class ViewController: UIViewController {
     
     
     var tableView: UITableView = UITableView()
-    var items: [String] = ["Viper", "X", "Games"]
 
+    
+    
+    
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var alert: UIBarButtonItem!
     override func viewDidLoad() {
@@ -58,13 +60,14 @@ class ViewController: UIViewController {
     {
         do
         {
-            var stmt = try db.prepare("SELECT count (*) FROM sentences WHERE type='Right word'")
+            var stmt = try db.prepare("SELECT count (*) FROM sentences WHERE type='Right Word'")
             var count = try stmt.scalar() as! Int64
             
-            var stmt2 = try db.prepare("SELECT count (*) FROM sentences WHERE type='Right word' and sentences.id IN (SELECT * FROM history)")
+            var stmt2 = try db.prepare("SELECT count (*) FROM sentences WHERE type='Right Word' and sentences.id IN (SELECT * FROM history)")
             var done = try stmt2.scalar() as! Int64
             var percentage: Float = Float(done)/Float(count)
             if(done != 0){
+                print(done)
                 rightWordProgressBar.setProgress(percentage, animated: true)
             }
             else{
@@ -115,8 +118,31 @@ class ViewController: UIViewController {
    
     
     
+    @IBAction func resetRightWord(_ sender: UIButton) {
+        do{
+            let stmt = try db.run("DELETE FROM HISTORY WHERE exercice_number IN (SELECT SENTENCES.exercice FROM SENTENCES WHERE TYPE ='Right Word')")
+            print("coucou")
+
+        }
+        catch
+        {
+            
+        }
+        load_stats()
+
+    }
     
 
+    @IBAction func extraWordReset(_ sender: UIButton) {
+        do{
+            let stmt = try db.run("DELETE FROM HISTORY WHERE exercice_number IN (SELECT SENTENCES.exercice FROM SENTENCES WHERE TYPE ='Extra Word')")
+            load_stats()
+        }
+        catch
+        {
+            
+        }
+    }
     
   
     override func didReceiveMemoryWarning() {
