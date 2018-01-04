@@ -90,20 +90,7 @@ class ViewController: UIViewController {
 
             }
             
-            stmt = try db.prepare("SELECT count(*) FROM ( SELECT type,count (*)  FROM sentences WHERE type='Best Word' GROUP BY exercice)")
-            count = try stmt.scalar() as! Int64
             
-            stmt2 = try db.prepare("SELECT count(*) FROM ( SELECT count (*)  FROM sentences WHERE type='Best Word' and sentences.exercice IN (SELECT * FROM history) GROUP BY exercice) ")
-            done = try stmt2.scalar() as! Int64
-            percentage = Float(done)/Float(count)
-            if(done != 0){
-                gapFillingProgressBar.setProgress(percentage, animated: true)
-            }
-            else{
-                gapFillingProgressBar.setProgress(0, animated: true)
-                
-            }
-       
         }
         catch
         {

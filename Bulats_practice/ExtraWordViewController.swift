@@ -65,18 +65,18 @@ class ExtraWordViewController: UIViewController {
                 history_exercice.append(Int(exercice[self.exercice_number]))
             }
             
-            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Extra word" && !history_exercice.contains(id)))
+            let sentences = try self.db.prepare(self.sentencessTable.filter(self.type == "Extra Word" && !history_exercice.contains(id)))
             
             //let sentences = self.sentencessTable.filter(self.type == "Right word")
             for sentence in sentences{
                 let id = sentence[self.id]
                 currentExercice = sentence[self.exercice]
                 let position = Int(sentence[self.position])
-                let sentence = sentence[self.sentence]
+                let text = sentence[self.sentence]
                // print("userID  \(sentence[self.id]), type : \(sentence[self.type]), sentence : \(sentence[self.sentence]), position : \(String(sentence[self.position])), pargraph : \(String(sentence[self.paragraph]))")
-
-                
-                
+                print(id)
+                print(position)
+                print(text)
                 
                 
                 
@@ -85,7 +85,7 @@ class ExtraWordViewController: UIViewController {
                 label.frame = CGRect(x: 10, y: yposition, width: 200, height: 70)
                 label.textAlignment = NSTextAlignment.center
                 label.numberOfLines = 3
-                label.text = sentence
+                label.text = text
                 scrollView.addSubview(label)
                 
                 
